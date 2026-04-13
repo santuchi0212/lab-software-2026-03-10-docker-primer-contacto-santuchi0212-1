@@ -1,0 +1,111 @@
+.table-container {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.data-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.data-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.data-table tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.data-table td {
+  padding: 16px;
+  color: #4b5563;
+}
+
+.actions-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.table-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 8px;
+  color: #9ca3af;
+  font-size: 1.1rem;
+}
+
+.table-wrap {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  padding: 12px 14px;
+  background: linear-gradient(90deg, var(--brand-dark), #111);
+  color: var(--brand-orange);
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+td {
+  padding: 12px 14px;
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.empty-message {
+  padding: 20px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    border-radius: 0;
+  }
+
+  .data-table {
+    font-size: 0.85rem;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 12px 8px;
+  }
+}
