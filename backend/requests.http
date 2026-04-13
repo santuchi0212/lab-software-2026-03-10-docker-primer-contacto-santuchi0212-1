@@ -1,0 +1,342 @@
+### Configuración base
+@baseUrl = http://localhost:5000
+@contentType = application/json
+
+###############################################
+# DEPARTAMENTOS - CRUD COMPLETO
+###############################################
+
+### 1. DEPARTAMENTOS - GET todos los departamentos
+GET {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+### 2. DEPARTAMENTOS - GET con paginación
+GET {{baseUrl}}/api/departments?skip=0&limit=10
+Content-Type: {{contentType}}
+
+### 3. DEPARTAMENTOS - GET un departamento específico
+GET {{baseUrl}}/api/departments/1
+Content-Type: {{contentType}}
+
+### 4. DEPARTAMENTOS - POST crear nuevo departamento
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Recursos Humanos",
+  "descripcion": "Departamento encargado de gestión de personal"
+}
+
+### 5. DEPARTAMENTOS - POST crear otro departamento
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Tecnología",
+  "descripcion": "Departamento de desarrollo e infraestructura"
+}
+
+### 6. DEPARTAMENTOS - POST crear más departamentos
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Ventas",
+  "descripcion": "Equipo comercial y de ventas"
+}
+
+### 7. DEPARTAMENTOS - POST validación (FALLA - nombre vacío)
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "nombre": "",
+  "descripcion": "Este fallaría porque el nombre está vacío"
+}
+
+### 8. DEPARTAMENTOS - POST validación (FALLA - sin nombre)
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "descripcion": "Falta el campo nombre requerido"
+}
+
+### 9. DEPARTAMENTOS - PUT actualizar departamento
+PUT {{baseUrl}}/api/departments/1
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Recursos Humanos - Actualizado",
+  "descripcion": "Departamento de RH y nómina"
+}
+
+### 10. DEPARTAMENTOS - PUT actualizar solo descripción
+PUT {{baseUrl}}/api/departments/2
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Tecnología",
+  "descripcion": "Infraestructura, desarrollo y soporte técnico"
+}
+
+### 11. DEPARTAMENTOS - PUT validación (FALLA - nombre vacío)
+PUT {{baseUrl}}/api/departments/1
+Content-Type: {{contentType}}
+
+{
+  "nombre": "",
+  "descripcion": "Esto falla porque nombre no puede estar vacío"
+}
+
+### 12. DEPARTAMENTOS - DELETE eliminar departamento
+DELETE {{baseUrl}}/api/departments/3
+Content-Type: {{contentType}}
+
+### 13. DEPARTAMENTOS - DELETE departamento que no existe (FALLA - 404)
+DELETE {{baseUrl}}/api/departments/999
+Content-Type: {{contentType}}
+
+
+###############################################
+# POSICIONES - CRUD COMPLETO
+###############################################
+
+### 14. POSICIONES - GET todas las posiciones
+GET {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+### 15. POSICIONES - GET con paginación
+GET {{baseUrl}}/api/positions?skip=0&limit=5
+Content-Type: {{contentType}}
+
+### 16. POSICIONES - GET una posición específica
+GET {{baseUrl}}/api/positions/1
+Content-Type: {{contentType}}
+
+### 17. POSICIONES - POST crear nueva posición
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Desarrollador Backend",
+  "descripcion": "Desarrollador especializado en backend con Python",
+  "salario_min": 2500,
+  "salario_max": 4000
+}
+
+### 18. POSICIONES - POST crear otra posición
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Gerente de Proyecto",
+  "descripcion": "Responsable de la gestión y coordinación de proyectos",
+  "salario_min": 3500,
+  "salario_max": 5500
+}
+
+### 19. POSICIONES - POST crear más posiciones
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Especialista en RH",
+  "descripcion": "Encargado de reclutamiento y gestión de personal",
+  "salario_min": 2000,
+  "salario_max": 3500
+}
+
+### 20. POSICIONES - POST sin salarios (son opcionales)
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Vendedor",
+  "descripcion": "Representante comercial"
+}
+
+### 21. POSICIONES - POST validación (FALLA - título vacío)
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "titulo": "",
+  "descripcion": "Esto falla porque el título está vacío"
+}
+
+### 22. POSICIONES - POST validación (FALLA - sin título)
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "descripcion": "Falta el campo titulo requerido"
+}
+
+### 23. POSICIONES - PUT actualizar posición
+PUT {{baseUrl}}/api/positions/1
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Desarrollador Backend Senior",
+  "descripcion": "Desarrollador senior con 5+ años de experiencia",
+  "salario_min": 3500,
+  "salario_max": 5500
+}
+
+### 24. POSICIONES - PUT actualizar salarios
+PUT {{baseUrl}}/api/positions/2
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Gerente de Proyecto",
+  "descripcion": "Gestor senior de proyectos complejos",
+  "salario_min": 4000,
+  "salario_max": 6500
+}
+
+###  Posiciones - PUT actualizar salario de ventas
+
+PUT {{baseUrl}}/api/positions/4
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Vendedor",
+  "descripcion": "Representante comercial con experiencia",
+  "salario_min": 2200,
+  "salario_max": 4000
+}
+
+### 25. POSICIONES - PUT validación (FALLA - título vacío)
+PUT {{baseUrl}}/api/positions/1
+Content-Type: {{contentType}}
+
+{
+  "titulo": "",
+  "descripcion": "Esto falla porque titulo no puede estar vacío"
+}
+
+### 26. POSICIONES - DELETE eliminar posición
+DELETE {{baseUrl}}/api/positions/4
+Content-Type: {{contentType}}
+
+### 27. POSICIONES - DELETE posición que no existe (FALLA - 404)
+DELETE {{baseUrl}}/api/positions/999
+Content-Type: {{contentType}}
+
+
+###############################################
+# FLUJO COMPLETO DE PRUEBA
+###############################################
+
+### PASO 1: Crear departamento de Ventas
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Ventas",
+  "descripcion": "Equipo comercial"
+}
+
+### PASO 2: Obtener todos los departamentos para verificar
+GET {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+### PASO 3: Crear posición de vendedor
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Vendedor Senior",
+  "descripcion": "Vendedor con experiencia",
+  "salario_min": 2500,
+  "salario_max": 4500
+}
+
+### PASO 4: Obtener todas las posiciones para verificar
+GET {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+### PASO 5: Actualizar departamento de Ventas
+PUT {{baseUrl}}/api/departments/1
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Ventas y Marketing",
+  "descripcion": "Equipo comercial y marketing"
+}
+
+### PASO 6: Verificar el departamento actualizado
+GET {{baseUrl}}/api/departments/1
+Content-Type: {{contentType}}
+
+### PASO 7: Actualizar posición de vendedor
+PUT {{baseUrl}}/api/positions/1
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Ejecutivo de Ventas",
+  "descripcion": "Ejecutivo comercial con experiencia",
+  "salario_min": 3000,
+  "salario_max": 5000
+}
+
+### PASO 8: Verificar posición actualizada
+GET {{baseUrl}}/api/positions/1
+Content-Type: {{contentType}}
+
+
+###############################################
+# CASOS DE ERROR Y VALIDACIÓN
+###############################################
+
+### ERROR 404 - Departamento no encontrado (GET)
+GET {{baseUrl}}/api/departments/9999
+Content-Type: {{contentType}}
+
+### ERROR 404 - Posición no encontrada (GET)
+GET {{baseUrl}}/api/positions/9999
+Content-Type: {{contentType}}
+
+### ERROR 400 - Validación fallida (POST Departamento)
+POST {{baseUrl}}/api/departments
+Content-Type: {{contentType}}
+
+{
+  "descripcion": "Solo descripción sin nombre"
+}
+
+### ERROR 400 - Validación fallida (POST Posición)
+POST {{baseUrl}}/api/positions
+Content-Type: {{contentType}}
+
+{
+  "descripcion": "Solo descripción sin titulo"
+}
+
+### ERROR 400 - Validación fallida (PUT Departamento)
+PUT {{baseUrl}}/api/departments/1
+Content-Type: {{contentType}}
+
+{
+  "nombre": ""
+}
+
+### ERROR 404 - Actualizar departamento no existente
+PUT {{baseUrl}}/api/departments/9999
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Nombre",
+  "descripcion": "Descripción"
+}
+
+### ERROR 404 - Actualizar posición no existente
+PUT {{baseUrl}}/api/positions/9999
+Content-Type: {{contentType}}
+
+{
+  "titulo": "Título",
+  "descripcion": "Descripción"
+}
+

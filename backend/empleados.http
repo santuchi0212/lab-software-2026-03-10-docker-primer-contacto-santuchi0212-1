@@ -1,0 +1,176 @@
+### Configuración base
+@baseUrl = http://localhost:5000
+@contentType = application/json
+
+###############################################
+# EMPLEADOS - CRUD COMPLETO
+###############################################
+
+### E1. EMPLEADOS - GET todos los empleados
+GET {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+### E2. EMPLEADOS - GET con paginación
+GET {{baseUrl}}/api/employees?skip=0&limit=10
+Content-Type: {{contentType}}
+
+### E3. EMPLEADOS - GET un empleado específico
+GET {{baseUrl}}/api/employees/2
+Content-Type: {{contentType}}
+
+### E4. EMPLEADOS - POST crear nuevo empleado (válido)
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "EMP001",
+  "nombre": "Ana",
+  "apellido": "Gonzalez",
+  "email": "ana.gonzalez@example.com",
+  "telefono": "+541112345678",
+  "fecha_nacimiento": "1990-03-15",
+  "fecha_contratacion": "2025-03-01",
+  "salario": 3500.50,
+  "activo": true,
+  "departamento_id": 1,
+  "Posicion_id": 2
+}
+
+### E5. EMPLEADOS - POST crear otro empleado
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "EMP002",
+  "nombre": "Luis",
+  "apellido": "Martínez",
+  "email": "luis.martinez@example.com",
+  "fecha_contratacion": "2025-04-15",
+  "salario": 2800,
+  "departamento_id": 2,
+  "Posicion_id": 1
+}
+
+### E5. EMPLEADOS - POST crear otro empleado
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "EMP003",
+  "nombre": "Carlos",
+  "apellido": "Gonzalez",
+  "email": "carlos.gonzalez@example.com",
+  "fecha_contratacion": "2025-04-15",
+  "salario": 2800,
+  "departamento_id": 2,
+  "Posicion_id": 1
+}
+
+### E6. EMPLEADOS - POST validación (FALLA - falta email)
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "EMP003",
+  "nombre": "Carla",
+  "apellido": "Pérez",
+  "fecha_contratacion": "2025-06-01",
+  "salario": 2100,
+  "departamento_id": 1,
+  "posicion_id": 3
+}
+
+### E7. EMPLEADOS - POST validación (FALLA - email inválido)
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "EMP004",
+  "nombre": "Pedro",
+  "apellido": "López",
+  "email": "no-es-email",
+  "fecha_contratacion": "2025-01-10",
+  "salario": 2000,
+  "departamento_id": 1,
+  "posicion_id": 1
+}
+
+### E8. EMPLEADOS - POST validación (FALLA - salario negativo)
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "EMP005",
+  "nombre": "Marta",
+  "apellido": "Ruiz",
+  "email": "marta.ruiz@example.com",
+  "fecha_contratacion": "2025-02-20",
+  "salario": -500,
+  "departamento_id": 1,
+  "posicion_id": 1
+}
+
+### E9. EMPLEADOS - PUT actualizar empleado
+PUT {{baseUrl}}/api/employees/12
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Carlos",
+  "apellido": "Gonzalez",
+  "departamento_id": 3,
+  "Posicion_id": 4
+
+}
+
+### E10. EMPLEADOS - PUT validación (FALLA - nombre vacío)
+PUT {{baseUrl}}/api/employees/1
+Content-Type: {{contentType}}
+
+{
+  "nombre": "",
+  "apellido": "González"
+}
+
+### E11. EMPLEADOS - DELETE eliminar empleado
+DELETE {{baseUrl}}/api/employees/5
+Content-Type: {{contentType}}
+
+### E12. EMPLEADOS - DELETE empleado que no existe (FALLA - 404)
+DELETE {{baseUrl}}/api/employees/9999
+Content-Type: {{contentType}}
+
+
+###############################################
+# FLUJO DE PRUEBA EMPLEADOS
+###############################################
+
+### FLOW-E1: Crear empleado de prueba
+POST {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+{
+  "codigo_empleado": "FLOW001",
+  "nombre": "Prueba",
+  "apellido": "Usuario",
+  "email": "prueba.usuario@example.com",
+  "fecha_contratacion": "2025-07-01",
+  "salario": 1500
+
+}
+
+### FLOW-E2: Obtener lista para verificar creación
+GET {{baseUrl}}/api/employees
+Content-Type: {{contentType}}
+
+### FLOW-E3: Actualizar empleado de prueba
+PUT {{baseUrl}}/api/employees/3
+Content-Type: {{contentType}}
+
+{
+  "nombre": "Prueba Mod",
+  "salario": 1700
+}
+
+### FLOW-E4: Obtener empleado actualizado
+GET {{baseUrl}}/api/employees/3
+Content-Type: {{contentType}}
