@@ -3,10 +3,10 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-COPY "Gestor de empleados/package.json" "Gestor de empleados/package-lock.json" ./
+COPY ["Gestor de empleados/package.json", "Gestor de empleados/package-lock.json", "./"]
 RUN npm ci
 
-COPY "Gestor de empleados/" .
+COPY ["Gestor de empleados/", "."]
 
 RUN npm run build
 
